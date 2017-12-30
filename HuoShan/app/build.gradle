@@ -25,4 +25,21 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //Rxjava
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.7'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    compile 'com.hjm:BottomTabBar:1.1.1'
+    //recycleview
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    //轮播
+    compile 'com.youth.banner:banner:1.4.10'
+    compile 'com.facebook.fresco:fresco:1.5.0'
+
+    //屏幕适配
+    compile 'com.zhy:percent-support-extends:1.0.1'
 }
