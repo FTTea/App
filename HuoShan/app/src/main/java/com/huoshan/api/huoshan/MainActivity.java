@@ -1,6 +1,8 @@
 package com.huoshan.api.huoshan;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -61,7 +63,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         currentItem.setTextColor(Color.parseColor("#ffba00"));
         //实例化presenter
         lp = new LoginPresenter(this);
-
+        //一进入应用查询数据库
+        //查询数据库
+        SharedPreferences sp = getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+        String state = sp.getString("state", "1");
+        //判断是否登录
+        if("登录成功".equals(state)){
+            //跳转到另外一个布局
+            Intent intent = new Intent(MainActivity.this, LoginAfterActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void init() {
@@ -140,7 +151,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 m_pager.setCurrentItem(1);
                 break;
             case R.id.m_lr:
-
                 PopuInit();
                 break;
         }
@@ -184,9 +194,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void showData(String str) {
         Toast.makeText(this,str,Toast.LENGTH_SHORT).show();
         if(str.equals("登录成功")){
+            //创建一个数据库并且存放到数据库当中
+            SharedPreferences sharedPreferences = getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
+            editor.putString("state", "登录成功");
+            editor.commit();//提交修改
+
             Intent intent=new Intent(this,LoginAfterActivity.class);
             startActivity(intent);
             finish();
+
         }else{
            return;
         }

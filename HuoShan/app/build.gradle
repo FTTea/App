@@ -39,7 +39,8 @@ dependencies {
     //轮播
     compile 'com.youth.banner:banner:1.4.10'
     compile 'com.facebook.fresco:fresco:1.5.0'
-
+    //拦截器
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
     //屏幕适配
     compile 'com.zhy:percent-support-extends:1.0.1'
 }
