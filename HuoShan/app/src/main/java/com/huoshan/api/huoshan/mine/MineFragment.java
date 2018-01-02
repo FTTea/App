@@ -129,6 +129,15 @@ public class MineFragment  extends Fragment implements View.OnClickListener {
         initView(view);
         //设置一张图片
         initListener();
+        //邀请好友的点击事件
+        mAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到邀请界面
+                Intent intent = new Intent(getActivity(), InviteActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
 
     }

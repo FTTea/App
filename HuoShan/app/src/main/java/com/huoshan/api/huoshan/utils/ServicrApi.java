@@ -4,6 +4,7 @@ package com.huoshan.api.huoshan.utils;
 
 import com.huoshan.api.huoshan.Bean.BaseBean;
 import com.huoshan.api.huoshan.Bean.LiveBean;
+import com.huoshan.api.huoshan.Bean.VideoBeans;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -20,4 +21,7 @@ public interface ServicrApi {
     //直播
     @GET(UrlUtils.LIVE_PATH)
     Call<LiveBean> getLiveItem();
+    //视频
+    @GET(UrlUtils.VIDEO_PATH)
+    Call<VideoBeans> getVideoItem();
 }

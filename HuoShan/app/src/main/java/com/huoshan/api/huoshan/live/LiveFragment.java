@@ -38,6 +38,9 @@ public class LiveFragment extends Fragment implements LiveApi{
          *  轮播展示
          */
         mLBanner .setImageLoader(new GlideImageLoader());
+        images.add("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3384628415,3416006593&fm=27&gp=0.jpg");
+        images.add("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3331814356,2659951730&fm=27&gp=0.jpg");
+        images.add("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3291318311,3527351425&fm=11&gp=0.jpg");
         //设置图片集合
         mLBanner .setImages(images);
         //banner设置方法全部调用完毕时最后调用

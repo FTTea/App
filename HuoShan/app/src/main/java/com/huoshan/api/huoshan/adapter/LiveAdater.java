@@ -50,7 +50,7 @@ public class LiveAdater extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return list.size();
     }
 
-    class MyViewHolder extends  RecyclerView.ViewHolder{
+    static class MyViewHolder extends  RecyclerView.ViewHolder{
         SimpleDraweeView image;
         public MyViewHolder(View itemView) {
             super(itemView);

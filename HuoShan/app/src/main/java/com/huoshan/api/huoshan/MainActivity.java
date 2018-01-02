@@ -19,13 +19,12 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.huoshan.api.huoshan.utils.ViewPagerIndicator;
 
 import com.huoshan.api.huoshan.Login.LoginApi;
 import com.huoshan.api.huoshan.Login.LoginPresenter;
 import com.huoshan.api.huoshan.LoginAfter.LoginAfterActivity;
 import com.huoshan.api.huoshan.live.LiveFragment;
-import com.huoshan.api.huoshan.utils.ViewPagerIndicator;
 import com.huoshan.api.huoshan.video.VideoFragment;
 
 import java.util.ArrayList;
