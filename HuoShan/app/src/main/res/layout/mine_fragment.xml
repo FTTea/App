@@ -121,14 +121,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <Button
-                            android:textColor="#ffffff"
+                            android:textColor="#ff3360"
                             android:background="@drawable/shape"
                             android:id="@+id/mf_bianji"
                             android:text="编辑"
                             android:layout_width="wrap_content"
                             android:layout_height="35dp" />
                         <Button
-                            android:textColor="#ffffff"
+                            android:textColor="#ff3360"
                             android:background="@drawable/shape"
                             android:layout_marginLeft="8dp"
                             android:id="@+id/mf_huoli"

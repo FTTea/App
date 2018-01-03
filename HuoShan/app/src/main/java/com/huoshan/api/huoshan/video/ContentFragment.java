@@ -5,17 +5,21 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huoshan.api.huoshan.Bean.VideoBeans;
 import com.huoshan.api.huoshan.R;
 import com.huoshan.api.huoshan.adapter.ContentAdapter;
@@ -25,6 +29,10 @@ import java.util.List;
 public class ContentFragment extends Fragment implements VideoApi{
     private VideoView videoView ;
     private VideoPresenter videoPresenter;
+    private TextView tv,fc_name,fc_desc;
+    private Button fc_guan;
+    private SimpleDraweeView fc_img;
+    private SwipeRefreshLayout refreshLayout;
     public ContentFragment() {
     }
 
@@ -49,6 +57,21 @@ public class ContentFragment extends Fragment implements VideoApi{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_content, container, false);
         videoView = view.findViewById(R.id.videoView);
+        tv = view.findViewById(R.id.ving_tv);
+        fc_img = view.findViewById(R.id.fc_img);
+        fc_name = view.findViewById(R.id.fc_name);
+        fc_guan = view.findViewById(R.id.fc_guan);
+        fc_desc = view.findViewById(R.id.fc_desc);
+
+        tv.setText("火力400");
+        //按钮的点击事件
+        fc_guan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                  Toast.makeText(getActivity(),"关注成功",Toast.LENGTH_SHORT).show();
+                  fc_guan.setVisibility(View.GONE);
+            }
+        });
         return view;
     }
 
@@ -89,6 +112,15 @@ public class ContentFragment extends Fragment implements VideoApi{
 
         //开始播放视频
         videoView.start();
+        //设置值
+        String s1 = data.get(0).getData().getAuthor().getAvatar_jpg().getUrl_list().get(0);
+        Uri uri = Uri.parse(s1);
+        fc_img.setImageURI(uri);
+        String nickname = data.get(0).getData().getAuthor().getNickname();
+        fc_name.setText(nickname);
+        String ti = data.get(0).getData().getTitle();
+        fc_desc.setText(ti);
+
     }
     class MyPlayerOnCompletionListener implements MediaPlayer.OnCompletionListener {
 

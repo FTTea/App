@@ -17,14 +17,12 @@ public class VideoingActivity extends AppCompatActivity{
 
     private SurfaceView surfaceView;
     private SurfaceHolder surfaceHolder;
-    private TextView tv;
     private VerticalViewPager verticalViewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videoing);
-        tv = findViewById(R.id.ving_tv);
-        tv.setText("火力400");
+
         initViewPager();
 
     }

@@ -24,13 +24,13 @@ public class AddressListActivity extends AppCompatActivity {
     private ContentResolver cr;
     private List<String> list = new ArrayList<>();
     private ListView  lv;
-    private TextView addl_sum;
+    private TextView addl_sum,add_tv;
     private ImageView addl_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address_list);
-        lv = findViewById(R.id.addl_lv);
+        add_tv = findViewById(R.id.add_tv);
         addl_sum = findViewById(R.id.addl_sum);
         addl_back = findViewById(R.id.addl_back);
         //返回
@@ -46,11 +46,10 @@ public class AddressListActivity extends AppCompatActivity {
 
         //联系人名展示
         ContentResolver cr = getContentResolver();
-        lv = findViewById(R.id.addl_lv);
         Uri uri1=Uri.parse("content://com.android.contacts/raw_contacts");
         Cursor cursor=cr.query(uri,null,null,null,null);
-        SimpleCursorAdapter simpleCursorAdapter = new android.widget.SimpleCursorAdapter(this, R.layout.item_list, cursor, new String[]{"_id", "display_name"}, new int[]{R.id.tv_item_list_id, R.id.tv_item_list_name});
-        lv.setAdapter(simpleCursorAdapter);
+       /* SimpleCursorAdapter simpleCursorAdapter = new android.widget.SimpleCursorAdapter(this, R.layout.item_list, cursor, new String[]{"_id", "display_name"}, new int[]{R.id.tv_item_list_id, R.id.tv_item_list_name});
+        lv.setAdapter(simpleCursorAdapter);*/
         //创建适配器
 
         //查看一共有多少的人数
@@ -74,7 +73,9 @@ public class AddressListActivity extends AppCompatActivity {
                 String contact = contacts[1];
                 //添加到集合
                 //展示效果
-
+                int length = contacts.length;
+                addl_sum.setText("共有"+length+"好友待关注");
+                add_tv.setText(contact);
                 break;
         }
 

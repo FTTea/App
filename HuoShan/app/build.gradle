@@ -55,4 +55,8 @@ dependencies {
 //    # ExoPlayer as IMediaPlayer: optional, experimental
     compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.6.1'
     compile 'com.android.support:preference-v7:26.1.0'
+
+    //下拉刷新
+    compile 'in.srain.cube:ultra-ptr:1.0.10'
+
 }
