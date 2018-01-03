@@ -50,7 +50,9 @@ public class LiveAdater extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             public void onClick(View v) {
                 Intent intent=new Intent(context, LiveActivity.class);
                 String rtmp_pull_url = dataBeanX.getData().getStream_url().getRtmp_pull_url();
+                String nickname = dataBeanX.getData().getOwner().getNickname();
                 intent.putExtra("stream_addr",rtmp_pull_url);
+                intent.putExtra("name",nickname);
                 context.startActivity(intent);
             }
         });

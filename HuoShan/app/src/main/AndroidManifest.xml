@@ -65,7 +65,7 @@
         <activity android:name=".live.application.VideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="user"
-              android:theme="@style/FullscreenTheme"
+
             ></activity>
         <service
             android:name=".live.services.MediaPlayerService"

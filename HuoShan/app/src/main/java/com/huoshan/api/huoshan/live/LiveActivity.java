@@ -1,9 +1,12 @@
 package com.huoshan.api.huoshan.live;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.huoshan.api.huoshan.R;
+import com.huoshan.api.huoshan.live.gift.ui.fragment.LiveViewFragment;
+import com.huoshan.api.huoshan.live.gift.ui.fragment.MainDialogFragment;
 import com.huoshan.api.huoshan.live.widget.media.IjkVideoView;
 
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
@@ -16,19 +19,22 @@ public class LiveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live);
-        initView();
+
         String  mVideoPath = getIntent().getStringExtra("stream_addr");
+        String  nickname = getIntent().getStringExtra("name");
 
-// init player
-        IjkMediaPlayer.loadLibrariesOnce(null);
-        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
-        if (mVideoPath != null) {
-            mLiveView.setVideoPath(mVideoPath);
-        }
-        mLiveView.start();
+       //直播
+        LiveViewFragment liveViewFragment = new LiveViewFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        Bundle bundle=new Bundle();
+        bundle.putString("path",mVideoPath);
+        liveViewFragment.setArguments(bundle);
+        transaction.add(R.id.flmain, liveViewFragment);
+        transaction.commit();
+
+        new MainDialogFragment().show(getSupportFragmentManager(),"MainDialogFragment");
     }
 
-    private void initView() {
-        mLiveView = (IjkVideoView) findViewById(R.id.live_view);
-    }
+
 }

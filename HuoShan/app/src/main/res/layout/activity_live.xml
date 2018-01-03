@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.huoshan.api.huoshan.live.LiveActivity">
 
-    <com.huoshan.api.huoshan.live.widget.media.IjkVideoView
-        android:id="@+id/live_view"
+
+    <FrameLayout
+        android:id="@+id/flmain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"/>
+        android:layout_height="match_parent" />
 </LinearLayout>
