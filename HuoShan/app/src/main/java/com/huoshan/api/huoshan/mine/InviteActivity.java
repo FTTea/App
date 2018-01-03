@@ -13,6 +13,7 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -24,15 +25,20 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import com.huoshan.api.huoshan.Bean.VideoBeans;
 import com.huoshan.api.huoshan.R;
+import com.huoshan.api.huoshan.adapter.TuiJianAdapter;
 import com.huoshan.api.huoshan.erweimautils.MipcaActivityCapture;
 import com.huoshan.api.huoshan.utils.WebViewActivity;
+import com.huoshan.api.huoshan.video.VideoApi;
+import com.huoshan.api.huoshan.video.VideoPresenter;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class InviteActivity extends AppCompatActivity {
-
+public class InviteActivity extends AppCompatActivity implements VideoApi {
+    private VideoPresenter videoPresenter;
     private ImageView acin_back;
       private ImageView acin_sou,iv;
       private LinearLayout acin_yao,acin_erwei,acin_sao,acin_tongxun,acin_xinlang;
@@ -41,7 +47,9 @@ public class InviteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        videoPresenter = new VideoPresenter(this);
         setContentView(R.layout.activity_invite);
+        videoPresenter.getVideo();
         //初始化组件
         acin_back = findViewById(R.id.acin_back);
         acin_sou = findViewById(R.id.acin_sou);
@@ -141,5 +149,12 @@ public class InviteActivity extends AppCompatActivity {
             }
         }
     }
-
+    //推荐用户展示
+    @Override
+    public void show(VideoBeans videoBeans) {
+        List<VideoBeans.DataBeanX> list = videoBeans.getData();
+        acin_lv.setLayoutManager(new LinearLayoutManager(this));
+        TuiJianAdapter tuiJianAdapter = new TuiJianAdapter(list, this);
+        acin_lv.setAdapter(tuiJianAdapter);
+    }
 }
