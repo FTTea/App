@@ -49,43 +49,6 @@
                android:layout_width="35dp"
                android:layout_height="35dp" />
        </RelativeLayout>
-       <!--下面的界面-->
-       <RelativeLayout
-           android:layout_marginTop="450dp"
-           android:padding="15dp"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-           <com.facebook.drawee.view.SimpleDraweeView
-               android:id="@+id/fc_img"
-               app:roundAsCircle="true"
-               android:layout_width="35dp"
-               android:layout_height="35dp" />
-           <TextView
-               android:textColor="#ffffff"
-               android:id="@+id/fc_name"
-               android:text="李小璐"
-               android:layout_centerVertical="true"
-               android:layout_marginLeft="50dp"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-           <Button
-               android:layout_marginLeft="200dp"
-               android:id="@+id/fc_guan"
-               android:text="关注"
-               android:visibility="visible"
-               android:textColor="#ffffff"
-               android:background="@drawable/shape"
-               android:layout_width="60dp"
-               android:layout_height="40dp" />
-       </RelativeLayout>
-       <TextView
-           android:id="@+id/fc_desc"
-           android:textColor="#ffffff"
-           android:layout_marginTop="480dp"
-           android:text="李小璐"
-           android:layout_marginLeft="15dp"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content" />
    </RelativeLayout>
 
 </LinearLayout>

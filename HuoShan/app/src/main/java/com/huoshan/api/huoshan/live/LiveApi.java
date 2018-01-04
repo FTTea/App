@@ -7,6 +7,6 @@ import com.huoshan.api.huoshan.Bean.LiveBean;
  * Created by lenovo on 2017/12/29.
  */
 
-public interface LiveApi {
+public interface LiveApi{
     void showData(LiveBean liveBean);
 }

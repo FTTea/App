@@ -3,6 +3,7 @@ package com.huoshan.api.huoshan.utils;
 
 
 import com.huoshan.api.huoshan.Bean.BaseBean;
+import com.huoshan.api.huoshan.Bean.CityBean;
 import com.huoshan.api.huoshan.Bean.LiveBean;
 import com.huoshan.api.huoshan.Bean.VideoBeans;
 
@@ -24,4 +25,7 @@ public interface ServicrApi {
     //视频
     @GET(UrlUtils.VIDEO_PATH)
     Call<VideoBeans> getVideoItem();
+    //同城
+    @GET(UrlUtils.CITY_PATH)
+    Call<CityBean> getCityItem();
 }

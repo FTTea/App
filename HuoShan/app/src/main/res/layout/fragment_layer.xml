@@ -96,8 +96,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00:00:00"
+<<<<<<< HEAD
                 android:textStyle="bold"
                 android:textColor="@color/yellow"
+=======
+                android:textColor="@color/colorAccent"
+>>>>>>> db1f509f6586557be473788dc415c0f6c5d77404
                 android:textSize="14sp" />
 
             <TextView
@@ -105,8 +109,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00/00/00"
+<<<<<<< HEAD
                 android:textColor="@color/yellow"
                 android:textStyle="bold"
+=======
+                android:textColor="@color/colorAccent"
+>>>>>>> db1f509f6586557be473788dc415c0f6c5d77404
                 android:textSize="14sp" />
         </LinearLayout>
     </RelativeLayout>

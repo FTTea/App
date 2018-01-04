@@ -58,20 +58,20 @@ public class ContentFragment extends Fragment implements VideoApi{
         View view = inflater.inflate(R.layout.fragment_content, container, false);
         videoView = view.findViewById(R.id.videoView);
         tv = view.findViewById(R.id.ving_tv);
-        fc_img = view.findViewById(R.id.fc_img);
+       /* fc_img = view.findViewById(R.id.fc_img);
         fc_name = view.findViewById(R.id.fc_name);
         fc_guan = view.findViewById(R.id.fc_guan);
-        fc_desc = view.findViewById(R.id.fc_desc);
+        fc_desc = view.findViewById(R.id.fc_desc);*/
 
         tv.setText("火力400");
-        //按钮的点击事件
+        /*//按钮的点击事件
         fc_guan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                   Toast.makeText(getActivity(),"关注成功",Toast.LENGTH_SHORT).show();
                   fc_guan.setVisibility(View.GONE);
             }
-        });
+        });*/
         return view;
     }
 
@@ -114,12 +114,12 @@ public class ContentFragment extends Fragment implements VideoApi{
         videoView.start();
         //设置值
         String s1 = data.get(0).getData().getAuthor().getAvatar_jpg().getUrl_list().get(0);
-        Uri uri = Uri.parse(s1);
+       /* Uri uri = Uri.parse(s1);
         fc_img.setImageURI(uri);
         String nickname = data.get(0).getData().getAuthor().getNickname();
         fc_name.setText(nickname);
         String ti = data.get(0).getData().getTitle();
-        fc_desc.setText(ti);
+        fc_desc.setText(ti);*/
 
     }
     class MyPlayerOnCompletionListener implements MediaPlayer.OnCompletionListener {

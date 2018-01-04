@@ -19,10 +19,10 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:name=".utils.MyApp"
         android:allowBackup="true"
@@ -48,35 +48,46 @@
         <activity android:name=".erweimautils.MipcaActivityCapture" />
         <activity android:name=".utils.WebViewActivity" />
         <activity android:name=".mine.AddressListActivity" />
-        <activity android:name=".live.LiveActivity"></activity>
+        <activity android:name=".live.LiveActivity" />
         <activity android:name=".live.application.AppActivity" />
-        <activity android:name=".live.application.RecentMediaActivity"
+        <activity
+            android:name=".live.application.RecentMediaActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="user"
-            ></activity>
-        <activity android:name=".live.application.SampleMediaActivity"
+            android:screenOrientation="user" />
+        <activity
+            android:name=".live.application.SampleMediaActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="user"
-            ></activity>
-        <activity android:name=".live.application.SettingsActivity"
+            android:screenOrientation="user" />
+        <activity
+            android:name=".live.application.SettingsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="user"
-            ></activity>
-        <activity android:name=".live.application.VideoActivity"
+            android:screenOrientation="user" />
+        <activity
+            android:name=".live.application.VideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="user"
+            android:screenOrientation="user" />
 
-            ></activity>
         <service
             android:name=".live.services.MediaPlayerService"
             android:enabled="false"
             android:exported="false"
             android:icon="@mipmap/ic_launcher"
+<<<<<<< HEAD
             >
         </service>
+=======
+
+            android:label="@string/app_name"></service>
+
+        <activity android:name=".frist.city.CityingActivity"></activity>
+
+
+
+>>>>>>> db1f509f6586557be473788dc415c0f6c5d77404
         <meta-data android:name="design_width" android:value="768"></meta-data>
 
         <meta-data android:name="design_height" android:value="1280"></meta-data>
+
     </application>
 
 </manifest>
