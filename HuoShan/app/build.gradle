@@ -64,5 +64,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.1.0'
     testCompile 'junit:junit:4.12'
+    //适配
+    compile 'com.zhy:autolayout:1.4.5'
 
 }
