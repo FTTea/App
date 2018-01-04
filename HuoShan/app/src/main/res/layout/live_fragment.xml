@@ -11,7 +11,16 @@
         android:layout_height="0dp"
         app:layout_heightPercent="35%w"
         />
-
+    <ViewFlipper
+        android:id="@+id/flipper"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="10%w"
+        android:background="@android:color/white"
+        android:autoStart="true"
+        android:flipInterval="3000"
+        android:inAnimation="@anim/push_up_in"
+        android:outAnimation="@anim/push_up_out"></ViewFlipper>
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
