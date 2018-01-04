@@ -3,9 +3,12 @@ package com.huoshan.api.huoshan.live.gift.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.huoshan.api.huoshan.R;
 import com.huoshan.api.huoshan.live.widget.media.IjkVideoView;
@@ -26,17 +29,20 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
  * AuthorPhone：nothing
  * Created by 2016/9/22.
  */
-public class LiveViewFragment extends Fragment {
+public class LiveViewFragment extends Fragment implements LiveViewFragmentApi{
+
+    private IjkVideoView mLiveView;
+    private String nickname;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
       View view=  inflater.inflate(R.layout.fragment_liveview, container, false);
-        IjkVideoView mLiveView=view.findViewById(R.id.live_view);
+        mLiveView = view.findViewById(R.id.live_view);
         Bundle arguments = getArguments();
         String mVideoPath = arguments.getString("path");
+        nickname = arguments.getString("name");
 
-// init player
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
         if (mVideoPath != null) {
@@ -45,5 +51,16 @@ public class LiveViewFragment extends Fragment {
         mLiveView.start();
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+       mLiveView.stopPlayback();
+    }
+
+    @Override
+    public String showNick() {
+        return nickname;
     }
 }

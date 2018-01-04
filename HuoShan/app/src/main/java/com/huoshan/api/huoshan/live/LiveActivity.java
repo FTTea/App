@@ -23,12 +23,13 @@ public class LiveActivity extends AppCompatActivity {
         String  mVideoPath = getIntent().getStringExtra("stream_addr");
         String  nickname = getIntent().getStringExtra("name");
 
-       //直播
+         //直播
         LiveViewFragment liveViewFragment = new LiveViewFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         Bundle bundle=new Bundle();
         bundle.putString("path",mVideoPath);
+        bundle.putString("name",nickname);
         liveViewFragment.setArguments(bundle);
         transaction.add(R.id.flmain, liveViewFragment);
         transaction.commit();
@@ -36,5 +37,9 @@ public class LiveActivity extends AppCompatActivity {
         new MainDialogFragment().show(getSupportFragmentManager(),"MainDialogFragment");
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+    }
 }

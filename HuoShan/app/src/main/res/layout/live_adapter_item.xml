@@ -1,23 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     >
 
+
     <com.facebook.drawee.view.SimpleDraweeView
     android:id="@+id/la_fresco"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    app:layout_heightPercent="100%w"
-    app:layout_widthPercent="98%w"
+     android:layout_width="match_parent"
+        android:layout_height="300dp"
      android:layout_marginBottom="5dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
+     android:layout_marginLeft="2dp"
+      android:layout_marginRight="2dp"
       >
-
-
     </com.facebook.drawee.view.SimpleDraweeView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="直播中"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:background="@drawable/zbtitle"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_alignBottom="@id/la_fresco"
+            >
+          <TextView
+              android:id="@+id/la_title"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="18sp"
+               android:text="title"
+              android:layout_marginLeft="10dp"
+              android:textColor="@color/white"
 
-</com.zhy.android.percent.support.PercentLinearLayout>
+              android:layout_marginBottom="27dp"
+                />
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/aa_"
+
+                 android:layout_toLeftOf="@id/la_city"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+
+                />
+            <TextView
+                android:id="@+id/la_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="city"
+                android:textColor="@color/white"
+                 android:layout_alignParentRight="true"
+                android:layout_marginRight="7dp"
+                android:layout_centerVertical="true"
+                />
+
+        </RelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

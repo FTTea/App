@@ -11,6 +11,13 @@
         android:layout_height="0dp"
         app:layout_heightPercent="35%w"
         />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="2%w"
+        android:background="@color/ashen"
+        ></View>
     <android.support.v7.widget.RecyclerView
         android:layout_marginTop="10dp"
         android:id="@+id/l_rv"

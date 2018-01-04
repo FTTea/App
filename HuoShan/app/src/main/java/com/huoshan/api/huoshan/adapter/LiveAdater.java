@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -56,6 +57,8 @@ public class LiveAdater extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 context.startActivity(intent);
             }
         });
+        myViewHolder.title.setText(dataBeanX.getData().getTitle());
+        myViewHolder.city.setText(dataBeanX.getData().getOwner().getCity());
     }
 
     @Override
@@ -64,10 +67,15 @@ public class LiveAdater extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     static class MyViewHolder extends  RecyclerView.ViewHolder{
+
+        TextView title;
+        TextView city;
         SimpleDraweeView image;
         public MyViewHolder(View itemView) {
             super(itemView);
             image=itemView.findViewById(R.id.la_fresco);
+            title=itemView.findViewById(R.id.la_title);
+            city=itemView.findViewById(R.id.la_city);
         }
     }
 }
