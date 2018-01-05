@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -24,10 +25,10 @@
                 android:layout_centerVertical="true"
                 android:background="@drawable/bg_radius_top_black"
                 android:gravity="center_vertical"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:paddingBottom="5dp"
-                android:paddingLeft="55dp"
-                android:paddingRight="10dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="0dp"
                 android:paddingTop="5dp">
 
                 <TextView
@@ -39,19 +40,26 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/fl_care"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="关注"
+                    android:background="@drawable/gztype"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
-            <com.huoshan.api.huoshan.live.gift.view.CustomRoundView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/ic_headpic"
+            <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/fl_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            fresco:roundAsCircle="true"
+            android:gravity="center_vertical"
+            android:layout_margin="0dp"
                 app:border_color="@color/colorPrimary"
-                app:border_width="1dp" />
+                app:border_width="1dp"
+            />
+
         </RelativeLayout>
 
         <com.huoshan.api.huoshan.live.gift.view.HorizontalListView
@@ -108,7 +116,7 @@
 
                 android:textColor="@color/yellow"
                 android:textStyle="bold"
-                
+
 
                 android:textSize="14sp" />
         </LinearLayout>

@@ -2,16 +2,20 @@ package com.huoshan.api.huoshan.live;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 
@@ -40,11 +44,17 @@ public class LiveFragment extends Fragment implements LiveApi{
     private ViewFlipper flipper;
     private List testList;
     private int count;
+    private TextView big_img ;
+    private TextView small_img;
+    private LivePresenter lp;
+    private SwipeRefreshLayout swipe;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.live_fragment, container, false);
-         flipper=view.findViewById(R.id.flipper);
+
+
         initView(view);
         /**
          *  轮播展示
@@ -57,10 +67,42 @@ public class LiveFragment extends Fragment implements LiveApi{
         mLBanner .setImages(images);
         //banner设置方法全部调用完毕时最后调用
         mLBanner .start();
-        LivePresenter lp=new LivePresenter(this);
+        lp = new LivePresenter(this);
         lp.getLivePresenter();
         //跑马灯效果
         runLight();
+        //切换布局
+        big_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
+                mLRv.setLayoutManager(gridLayoutManager);
+
+            }
+        });
+        small_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+                mLRv.setLayoutManager(gridLayoutManager);
+
+            }
+        });
+        //上拉刷新
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        lp.getLivePresenter();
+                        //停止刷新
+                        swipe.setRefreshing(false);
+                        Toast.makeText(getContext(), "刷新成功", Toast.LENGTH_SHORT).show();
+                    }
+                }, 2000);
+            }
+        });
         return view;
     }
 
@@ -110,8 +152,11 @@ public class LiveFragment extends Fragment implements LiveApi{
     private void initView(View view) {
         mLBanner = (Banner) view.findViewById(R.id.l_banner);
         mLRv = (RecyclerView) view.findViewById(R.id.l_rv);
+        flipper=view.findViewById(R.id.flipper);
+        big_img = view.findViewById(R.id.big_img);
+        small_img = view.findViewById(R.id.small_img);
+        swipe = view.findViewById(R.id.l_switch);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-
         mLRv.setLayoutManager(gridLayoutManager);
     }
 

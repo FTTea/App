@@ -1,5 +1,7 @@
 package com.huoshan.api.huoshan.live.gift.ui.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,7 +31,7 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
  * AuthorPhone：nothing
  * Created by 2016/9/22.
  */
-public class LiveViewFragment extends Fragment implements LiveViewFragmentApi{
+public class LiveViewFragment extends Fragment {
 
     private IjkVideoView mLiveView;
     private String nickname;
@@ -41,7 +43,7 @@ public class LiveViewFragment extends Fragment implements LiveViewFragmentApi{
         mLiveView = view.findViewById(R.id.live_view);
         Bundle arguments = getArguments();
         String mVideoPath = arguments.getString("path");
-        nickname = arguments.getString("name");
+
 
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
@@ -57,10 +59,12 @@ public class LiveViewFragment extends Fragment implements LiveViewFragmentApi{
     public void onDestroyView() {
         super.onDestroyView();
        mLiveView.stopPlayback();
+        SharedPreferences sp = getActivity().getSharedPreferences("owner", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.remove("name");
+        edit.remove("avatar");
+        edit.commit();
     }
 
-    @Override
-    public String showNick() {
-        return nickname;
-    }
+
 }

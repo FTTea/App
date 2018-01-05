@@ -5,6 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,8 +26,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.huoshan.api.huoshan.R;
 import com.huoshan.api.huoshan.live.gift.adapter.AudienceAdapter;
 import com.huoshan.api.huoshan.live.gift.adapter.MessageAdapter;
@@ -112,6 +116,8 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
 
     private Timer timer;
     private TextView nickname;
+    private TextView care;
+    private SimpleDraweeView simple;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -139,6 +145,8 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         etInput = (EditText) view.findViewById(R.id.etInput);
         sendInput = (TextView) view.findViewById(R.id.sendInput);
         nickname = (TextView) view.findViewById(R.id.fl_name);
+        simple = view.findViewById(R.id.fl_img);
+        care = view.findViewById(R.id.fl_care);
         tvChat.setOnClickListener(this);
         tvSendone.setOnClickListener(this);
         tvSendtwo.setOnClickListener(this);
@@ -149,7 +157,36 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         outAnim = (TranslateAnimation) AnimationUtils.loadAnimation(getActivity(), R.anim.gift_out);
         giftNumAnim = new NumAnim();
         clearTiming();
+        setData();
+        setCare();
         return view;
+    }
+
+    private void setCare() {
+        final String iscare = care.getText().toString().trim();
+        care.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(iscare.equals("关注")){
+                    care.setText("已关注");
+                    Toast.makeText(getContext(),"已关注",Toast.LENGTH_SHORT).show();
+                }else if(iscare.equals("已关注")){
+                    care.setText("关注");
+                    Toast.makeText(getContext(),"已取消关注",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
+
+    private void setData() {
+        SharedPreferences sp = getActivity().getSharedPreferences("owner", Context.MODE_PRIVATE);
+        String nick = sp.getString("name", null);
+        String avatar = sp.getString("avatar", null);
+        nickname.setText(nick);
+        Uri uri=Uri.parse(avatar);
+        simple.setImageURI(uri);
     }
 
     @Override
@@ -724,6 +761,8 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         timer = new Timer();
         timer.schedule(task, 0, 3000);
     }
+
+
 
     /**
      * 数字放大动画
