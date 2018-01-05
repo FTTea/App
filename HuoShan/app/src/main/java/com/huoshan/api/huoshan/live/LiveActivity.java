@@ -21,7 +21,7 @@ public class LiveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_live);
 
         String  mVideoPath = getIntent().getStringExtra("stream_addr");
-        String  nickname = getIntent().getStringExtra("name");
+
 
          //直播
         LiveViewFragment liveViewFragment = new LiveViewFragment();
@@ -29,7 +29,7 @@ public class LiveActivity extends AppCompatActivity {
 
         Bundle bundle=new Bundle();
         bundle.putString("path",mVideoPath);
-        bundle.putString("name",nickname);
+
         liveViewFragment.setArguments(bundle);
         transaction.add(R.id.flmain, liveViewFragment);
         transaction.commit();

@@ -2,6 +2,7 @@ package com.huoshan.api.huoshan.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -49,11 +50,18 @@ public class LiveAdater extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         myViewHolder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, LiveActivity.class);
                 String rtmp_pull_url = dataBeanX.getData().getStream_url().getRtmp_pull_url();
                 String nickname = dataBeanX.getData().getOwner().getNickname();
+                String avatar = dataBeanX.getData().getOwner().getAvatar_jpg().getUrl_list().get(0);
+                //数据存储
+                SharedPreferences sp = context.getSharedPreferences("owner", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = sp.edit();
+                edit.putString("name",nickname);
+                edit.putString("avatar",avatar);
+                edit.commit();
+                //跳转传值
+                Intent intent=new Intent(context, LiveActivity.class);
                 intent.putExtra("stream_addr",rtmp_pull_url);
-                intent.putExtra("name",nickname);
                 context.startActivity(intent);
             }
         });
