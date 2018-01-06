@@ -163,13 +163,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         DisplayMetrics metric = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metric);
         int width = metric.widthPixels;     // 屏幕宽度（像素）
-        //
+
         ppw.setWidth(width);
 
         TextView login=contentview.findViewById(R.id.l_login);
         TextView reg=contentview.findViewById(R.id.l_reg);
         mob = contentview.findViewById(R.id.l_mob);
         pwd = contentview.findViewById(R.id.l_pwd);
+        //存入到数据库当中
+        SharedPreferences mSharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        String s = mob.getText().toString().trim();
+        String p = pwd.getText().toString().trim();
+        editor.putString("name",s);
+        editor.putString("pwd",p);
+        editor.commit();
+
         ImageView cha=contentview.findViewById(R.id.l_cha);
         login.setOnClickListener(new View.OnClickListener() {
             @Override

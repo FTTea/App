@@ -1,8 +1,10 @@
 package com.huoshan.api.huoshan.video;
 
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -26,12 +28,16 @@ import com.huoshan.api.huoshan.adapter.ContentAdapter;
 
 import java.util.List;
 
-public class ContentFragment extends Fragment implements VideoApi{
+import me.yokeyword.swipebackfragment.SwipeBackFragment;
+import me.yokeyword.swipebackfragment.SwipeBackLayout;
+
+public class ContentFragment extends SwipeBackFragment implements VideoApi{
     private VideoView videoView ;
     private VideoPresenter videoPresenter;
     private TextView tv,fc_name,fc_desc;
     private Button fc_guan;
     private SimpleDraweeView fc_img;
+    private static final int VIBRATE_DURATION = 20;
     private SwipeRefreshLayout refreshLayout;
     public ContentFragment() {
     }
@@ -72,8 +78,40 @@ public class ContentFragment extends Fragment implements VideoApi{
                   fc_guan.setVisibility(View.GONE);
             }
         });*/
+        //设置滑动退出
+      /*  // 设置滑动方向
+        getSwipeBackLayout().setEdgeOrientation(SwipeBackLayout.EDGE_LEFT); // EDGE_LEFT(默认),EDGE_ALL
+        // 设置侧滑触摸生效区域 MAX,MED,MIN,custom
+        //setEdgeLevel(SwipeBackLayout.EdgeLevel.MAX)
+        // 滑动过程监听
+        getSwipeBackLayout().addSwipeListener(new SwipeBackLayout.OnSwipeListener() {
+            @Override
+            public void onDragStateChange(int state) {
+                // Drag state
+
+            }
+
+            @Override
+            public void onEdgeTouch(int edgeFlag) {
+                // 触摸的边缘 flag
+                vibrate(VIBRATE_DURATION);
+            }
+
+            @Override
+            public void onDragScrolled(float scrollPercent) {
+                // 滑动百分比
+                vibrate(VIBRATE_DURATION);
+            }
+        });*/
         return view;
     }
+   /* private void vibrate(long duration) {
+        Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        long[] pattern = {
+                0, duration
+        };
+        vibrator.vibrate(pattern, -1);
+    }*/
 
 
 
@@ -126,8 +164,9 @@ public class ContentFragment extends Fragment implements VideoApi{
 
         @Override
         public void onCompletion(MediaPlayer mp) {
-            Toast.makeText( getActivity(), "播放完成了", Toast.LENGTH_SHORT).show();
+            //Toast.makeText( getActivity(), "播放完成了", Toast.LENGTH_SHORT).show();
+            //开始播放视频
+            videoView.start();
         }
     }
-
 }
