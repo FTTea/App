@@ -66,5 +66,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //适配
     compile 'com.zhy:autolayout:1.4.5'
+    //播放视频滑动退出当前界面
+    compile 'me.yokeyword:swipebackfragment:0.4.0'
+    //版本更新
+
 
 }

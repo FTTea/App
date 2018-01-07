@@ -72,8 +72,8 @@ public class InviteActivity extends AppCompatActivity implements VideoApi {
         acin_sou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InviteActivity.this, SearchActivity.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(InviteActivity.this, SearchActivity.class);
+                startActivity(intent);*/
             }
         });
         //点击邀请好友吧

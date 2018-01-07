@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.huoshan.api.huoshan.mine.EditorActivity">
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <ImageView
+                android:id="@+id/edac_back"
+                android:background="@drawable/aam"
+                android:layout_width="35dp"
+                android:layout_alignParentLeft="true"
+                android:layout_height="35dp" />
+            <TextView
+                android:text="编辑资料"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="保存"
+                android:id="@+id/edac_cun"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/line"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/edac_img"
+            android:background="@drawable/a__"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <TextView
+            android:text="点击可以更换头像"
+            android:id="@+id/edac_huan"
+            android:textColor="#ff3360"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:background="#ffffff"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:text="昵称:"
+                android:textColor="#ff3360"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:background="@null"
+                android:id="@+id/nicheng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:background="#FFBEB8B9"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+        <RelativeLayout
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:text="火山号:"
+                android:layout_marginTop="13dp"
+                android:layout_alignParentLeft="true"
+                android:textColor="#ff3360"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_marginTop="13dp"
+                android:text="12315156"
+                android:layout_marginLeft="65dp"
+                android:background="@null"
+                android:id="@+id/num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_alignParentRight="true"
+                android:background="@drawable/shape"
+                android:id="@+id/fuzhi"
+                android:layout_marginRight="10dp"
+                android:text="点击复制"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+
+        </RelativeLayout>
+        <View
+            android:background="#FFBEB8B9"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+        <RelativeLayout
+            android:background="#ffffff"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:text="性别:"
+                android:layout_alignParentLeft="true"
+                android:textColor="#ff3360"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_marginLeft="40dp"
+                android:background="@null"
+                android:id="@+id/xuan_sex"
+                android:hint="点击选择"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <View
+            android:background="#FFBEB8B9"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+        <RelativeLayout
+            android:background="#ffffff"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:text="生日:"
+                android:layout_alignParentLeft="true"
+                android:textColor="#ff3360"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_marginLeft="40dp"
+                android:background="@null"
+                android:id="@+id/xuan_age"
+                android:hint="点击选择"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <View
+            android:background="#FFBEB8B9"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:id="@+id/gexing"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <TextView
+            android:text="有趣的个性签名会吸引更多的粉丝...."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

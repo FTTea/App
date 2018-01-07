@@ -1,7 +1,7 @@
 package com.huoshan.api.huoshan.mine;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -12,109 +12,61 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.interfaces.DraweeController;
-import com.facebook.drawee.view.SimpleDraweeView;
-import com.huoshan.api.huoshan.MainActivity;
 import com.huoshan.api.huoshan.R;
-import com.huoshan.api.huoshan.mine.setup.SetUpActivity;
 import com.huoshan.api.huoshan.utils.OkHttp;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.Request;
 
-import static android.app.Activity.RESULT_OK;
+public class EditorActivity extends AppCompatActivity implements View.OnClickListener {
 
-/**
- * Created by lenovo on 2017/12/29.
- */
-
-public class MineFragment  extends Fragment implements View.OnClickListener {
-    private View view;
-    private ImageView mAdd;
+    private ImageView mEdacBack;
     /**
-     * 主人
+     * 保存
      */
-    private TextView mTvTitle;
-    private ImageView mShare;
-    private ImageView mShezhi;
-    private RelativeLayout mTi;
-    private ImageView mHead;
+    private TextView mEdacCun;
+    private ImageView mEdacImg;
     /**
-     * 0
+     * 点击可以更换头像
      */
-    private TextView mFensi;
-    /**
-     * 0
-     */
-    private TextView mGuanzhu;
-    /**
-     * 4
-     */
-    private TextView mShuoli;
-    /**
-     * 编辑
-     */
-
-    /**
-     * 火力/钻石
-     */
-
-    /**
-     * 有趣的个性签名可以吸引更多的粉丝...
-     */
-    private TextView mQianming;
-    private ViewPager mViewpager;
-    /**
-     * 编辑
-     */
-    private Button mBianji;
-    /**
-     * 火力/钻石
-     */
-    private Button mHuoli;
-    private PopupWindow mPopWindow;
-    /**
-     * 邀请好友加入火山
-     */
-    private TextView mTv;
-    private ImageView mCha;
-    private RelativeLayout mMa;
-    /**
-     * 与好友一起分享生活精彩瞬间
-     */
-    private TextView mF;
-    /**
-     * 邀请好友
-     */
-    private Button mYaoqing;
+    private TextView mEdacHuan;
+    private EditText mNicheng;
+    private EditText mNum;
     private LinearLayout ll;
+    /**
+     * 点击复制
+     */
+    private Button mFuzhi;
+    /**
+     * 点击选择
+     */
+    private EditText mXuanSex;
+    /**
+     * 点击选择
+     */
+    private EditText mXuanAge;
+    private LinearLayout mGexing;
     private static final int PHOTO_REQUEST_CAREMA = 1;// 拍照
     private static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
     private static final int PHOTO_REQUEST_CUT = 3;// 结果
@@ -123,117 +75,85 @@ public class MineFragment  extends Fragment implements View.OnClickListener {
     private File tempFile;
     private Bitmap head;// 头像Bitmap
     private static String path = "/sdcard/myHead/";// sd路径
-    private ImageView anim;
-    @Nullable
+    private Calendar mCalendar;
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.mine_fragment,container,false);
-        initView(view);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_editor);
+        initView();
         //查询数据库
-        SharedPreferences  sp = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        //查询数据库
+        SharedPreferences sp = getSharedPreferences("user", Context.MODE_PRIVATE);
         String string = sp.getString("name", "你拥我暖");
+        //返回上一个界面
+        mEdacBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 EditorActivity.this.finish();
+            }
+        });
         //设置一张图片
         initListener();
-        //设置标题
-        mTvTitle.setText(string);
+        //设置值
+        mNicheng.setText(string);
+        //点击选择性别
+        mXuanSex.setCursorVisible(false);
+        mXuanAge.setCursorVisible(false);
+        mNicheng.setCursorVisible(false);
 
-        //邀请好友的点击事件
-        mAdd.setOnClickListener(new View.OnClickListener() {
+        mXuanSex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //跳转到邀请界面
-                Intent intent = new Intent(getActivity(), InviteActivity.class);
-                startActivity(intent);
+                  AlertDialog.Builder builder = new AlertDialog.Builder(EditorActivity.this);
+                  builder.setMessage("女")
+                          .setMessage("男")
+                          .setNegativeButton("取消",null )
+                          .create();
+                  builder.show();
+                  //判断选择的是男还是女
             }
         });
-        //设置下面的动画
-        final TranslateAnimation animation = new TranslateAnimation(0, 0,0, 40);
-        animation.setDuration(1500);//设置动画持续时间
-        animation.setRepeatCount(200);//设置重复次数
-        animation.setRepeatMode(Animation.REVERSE);//设置反方向执行
-        anim.setAnimation(animation);
-        /** 开始动画 */
-        animation.startNow();
-
-        //点击编辑
-        mBianji.setOnClickListener(new View.OnClickListener() {
+        //点击保存
+        mEdacCun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //跳转到编辑界面
-                Intent intent = new Intent(getActivity(), EditorActivity.class);
-                startActivity(intent);
+                Toast.makeText(EditorActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
             }
         });
-        return view;
+        //点击选择生日
+        mXuanAge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCalendar = Calendar.getInstance();
+                DatePickerDialog pickerDialog = new DatePickerDialog(EditorActivity.this, new DatePickerDialog.OnDateSetListener() {
 
-    }
-    private void initView(View view) {
-        mAdd = (ImageView) view.findViewById(R.id.mf_add);
-        mTvTitle = (TextView) view.findViewById(R.id.mf__title);
-        mShare = (ImageView) view.findViewById(R.id.mf_share);
-        mShezhi = (ImageView) view.findViewById(R.id.mf_shezhi);
-        mTi = (RelativeLayout) view.findViewById(R.id.mf_ti);
-        mHead = (ImageView) view.findViewById(R.id.mf_head);
-        mFensi = (TextView) view.findViewById(R.id.mf_fensi);
-        mGuanzhu = (TextView) view.findViewById(R.id.mf_guanzhu);
-        ll = view.findViewById(R.id.ll);
-        anim = view.findViewById(R.id.anim);
-        mQianming = (TextView) view.findViewById(R.id.qianming);
-        mViewpager = (ViewPager) view.findViewById(R.id.viewpager);
-        mAdd.setOnClickListener(this);
-        mTvTitle.setOnClickListener(this);
-        mShare.setOnClickListener(this);
-        mShezhi.setOnClickListener(this);
-        mTi.setOnClickListener(this);
-        mHead.setOnClickListener(this);
-        mFensi.setOnClickListener(this);
-        mGuanzhu.setOnClickListener(this);
-        mShuoli = (TextView) view.findViewById(R.id.mf_shuoli);
-        mBianji = (Button) view.findViewById(R.id.mf_bianji);
-        mBianji.setOnClickListener(this);
-        mHuoli = (Button) view.findViewById(R.id.mf_huoli);
-        mHuoli.setOnClickListener(this);
-        mQianming.setOnClickListener(this);
-        mViewpager.setOnClickListener(this);
-        Bitmap bt = BitmapFactory.decodeFile(path + "head.jpg");// 从SD卡中找头像，转换成Bitmap
-        if (bt != null) {
-            @SuppressWarnings("deprecation")
-            Drawable drawable = new BitmapDrawable(bt);// 转换成drawable
-            mHead.setImageDrawable(drawable);
-        } else {
-            /**
-             * 如果SD里面没有则需要从服务器取头像，取回来的头像再保存在SD中
-             *
-             */
-        }
-    }
-    private void initListener() {
-        mHead.setOnClickListener(this);
-    }
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            default:
-                break;
-            case R.id.mf_add:
-                break;
-            case R.id.mf__title:
-                break;
-            case R.id.mf_share:
-                break;
-            case R.id.mf_shezhi:
-                //点击设置--跳转到设置的界面
-                Intent intent = new Intent(getActivity(), SetUpActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.mf_ti:
-                break;
-            case R.id.mf_head:
+                    @Override
+                    public void onDateSet(DatePicker arg0, int year, int month, int day) {
+                        mCalendar.set(year, month, day);//将点击获得的年月日获取到calendar中。
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日");//转型
+                        Toast.makeText(getApplicationContext(), format.format(mCalendar.getTime()), Toast.LENGTH_LONG).show();
+                        mXuanAge.setText(format.format(mCalendar.getTime()));
+                    }
+                }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
+                pickerDialog.show();
+            }
+        });
+        //点击下面的个性签名布局,实现上面的布局隐藏
+        mGexing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ll.setVisibility(View.GONE);
+            }
+        });
+        //点击更换头像
+        mEdacImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 //上传头像
                 //点击退出弹出框
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(EditorActivity.this);
                 final AlertDialog dialog = builder.create();
-                View view = View.inflate(getContext(), R.layout.head_img, null);
+                View view = View.inflate(EditorActivity.this, R.layout.head_img, null);
                 TextView tv_select_gallery = (TextView) view.findViewById(R.id.tv_select_gallery);
                 TextView tv_select_camera = (TextView) view.findViewById(R.id.tv_select_camera);
                 tv_select_gallery.setOnClickListener(new View.OnClickListener() {// 在相册中选取
@@ -266,28 +186,39 @@ public class MineFragment  extends Fragment implements View.OnClickListener {
                 });
                 dialog.setView(view);
                 dialog.show();
-                break;
-            case R.id.mf_fensi:
-                break;
-            case R.id.mf_guanzhu:
-                break;
-            case R.id.mf_bianji:
-                break;
-            case R.id.mf_huoli:
-                //点击火力砖石--跳转
-                Intent intent2 = new Intent(getActivity(), HuoLiActivity.class);
-                startActivity(intent2);
-                break;
-            case R.id.qianming:
-                break;
-            case R.id.viewpager:
-                break;
+            }
+        });
 
+    }
+
+    private void initView() {
+        ll = findViewById(R.id.line);
+        mEdacBack = (ImageView) findViewById(R.id.edac_back);
+        mEdacCun = (TextView) findViewById(R.id.edac_cun);
+        mEdacImg = (ImageView) findViewById(R.id.edac_img);
+        mEdacHuan = (TextView) findViewById(R.id.edac_huan);
+        mNicheng = (EditText) findViewById(R.id.nicheng);
+        mNum = (EditText) findViewById(R.id.num);
+        mFuzhi = (Button) findViewById(R.id.fuzhi);
+        mFuzhi.setOnClickListener(this);
+        mXuanSex = (EditText) findViewById(R.id.xuan_sex);
+        mXuanAge = (EditText) findViewById(R.id.xuan_age);
+        mGexing = (LinearLayout) findViewById(R.id.gexing);
+        Bitmap bt = BitmapFactory.decodeFile(path + "head.jpg");// 从SD卡中找头像，转换成Bitmap
+        if (bt != null) {
+            @SuppressWarnings("deprecation")
+            Drawable drawable = new BitmapDrawable(bt);// 转换成drawable
+            mEdacImg.setImageDrawable(drawable);
+        } else {
+            /**
+             * 如果SD里面没有则需要从服务器取头像，取回来的头像再保存在SD中
+             *
+             */
         }
     }
     /*
-   * 判断sdcard是否被挂载
-   */
+  * 判断sdcard是否被挂载
+  */
     private boolean hasSdcard() {
         //判断ＳＤ卡手否是安装好的　　　media_mounted
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -339,7 +270,7 @@ public class MineFragment  extends Fragment implements View.OnClickListener {
                 /**
                  * 获得图片
                  */
-                mHead.setImageBitmap(bitmap);
+                mEdacImg.setImageBitmap(bitmap);
                 //保存到SharedPreferences
                 saveBitmapToSharedPreferences(bitmap);
             }
@@ -363,7 +294,7 @@ public class MineFragment  extends Fragment implements View.OnClickListener {
         byte[] byteArray = byteArrayOutputStream.toByteArray();
         String imageString = new String(Base64.encodeToString(byteArray, Base64.DEFAULT));
         //第三步:将String保持至SharedPreferences
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("testSP", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("testSP", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("image", imageString);
         editor.commit();
@@ -397,21 +328,35 @@ public class MineFragment  extends Fragment implements View.OnClickListener {
 
     //从SharedPreferences获取图片
     private void getBitmapFromSharedPreferences(){
-        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("testSP", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences=getSharedPreferences("testSP", Context.MODE_PRIVATE);
         //第一步:取出字符串形式的Bitmap
         String imageString=sharedPreferences.getString("image", "");
         //第二步:利用Base64将字符串转换为ByteArrayInputStream
         byte[] byteArray=Base64.decode(imageString, Base64.DEFAULT);
         if(byteArray.length==0){
-            mHead.setImageResource(R.mipmap.ic_launcher);
+            mEdacImg.setImageResource(R.mipmap.ic_launcher);
         }else{
             ByteArrayInputStream byteArrayInputStream=new ByteArrayInputStream(byteArray);
 
             //第三步:利用ByteArrayInputStream生成Bitmap
             Bitmap bitmap= BitmapFactory.decodeStream(byteArrayInputStream);
-            mHead.setImageBitmap(bitmap);
+            mEdacImg.setImageBitmap(bitmap);
         }
 
     }
-
+    private void initListener() {
+        mEdacImg.setOnClickListener(this);
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            default:
+                break;
+            case R.id.fuzhi:
+                //点击复制
+                String trim = mNum.getText().toString().trim();
+                Toast.makeText(EditorActivity.this,"火山号已复制到剪切板",Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }
