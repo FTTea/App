@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.huoshan.api.huoshan.searchUtils.SearchActivity;
 import com.huoshan.api.huoshan.utils.ViewPagerIndicator;
 
 import com.huoshan.api.huoshan.Login.LoginApi;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText mob;
     private EditText pwd;
     private LoginPresenter lp;
+    private ImageView search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         m_video = findViewById(R.id.m_video);
         indicator = findViewById(R.id.m_indicator);
         mLr = findViewById(R.id.m_lr);
+        search=findViewById(R.id.m_search);
+        search.setOnClickListener(this);
         m_live.setOnClickListener(this);
         m_video.setOnClickListener(this);
         mLr.setOnClickListener(this);
@@ -151,6 +156,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.m_lr:
                 PopuInit();
+                break;
+            case R.id.m_search:
+                   Intent intent=new Intent(this, SearchActivity.class);
+                   startActivity(intent);
                 break;
         }
     }

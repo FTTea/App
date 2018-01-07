@@ -5,6 +5,7 @@ package com.huoshan.api.huoshan.utils;
 import com.huoshan.api.huoshan.Bean.BaseBean;
 import com.huoshan.api.huoshan.Bean.CityBean;
 import com.huoshan.api.huoshan.Bean.LiveBean;
+import com.huoshan.api.huoshan.Bean.SearchBean;
 import com.huoshan.api.huoshan.Bean.VideoBeans;
 
 import retrofit2.Call;
@@ -28,4 +29,7 @@ public interface ServicrApi {
     //同城
     @GET(UrlUtils.CITY_PATH)
     Call<CityBean> getCityItem();
+
+    @GET(UrlUtils.SEARCH_PATH)
+    Call<SearchBean> getSearch();
 }

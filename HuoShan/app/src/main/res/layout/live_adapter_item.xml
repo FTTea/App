@@ -42,7 +42,10 @@
               android:textColor="@color/white"
 
               android:layout_marginBottom="27dp"
-                />
+              android:maxEms="6"
+              android:maxLines="1"
+              android:ellipsize="end"
+              />
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"

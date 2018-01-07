@@ -29,6 +29,7 @@ import com.huoshan.api.huoshan.Bean.VideoBeans;
 import com.huoshan.api.huoshan.R;
 import com.huoshan.api.huoshan.adapter.TuiJianAdapter;
 import com.huoshan.api.huoshan.erweimautils.MipcaActivityCapture;
+import com.huoshan.api.huoshan.searchUtils.SearchActivity;
 import com.huoshan.api.huoshan.utils.WebViewActivity;
 import com.huoshan.api.huoshan.video.VideoApi;
 import com.huoshan.api.huoshan.video.VideoPresenter;

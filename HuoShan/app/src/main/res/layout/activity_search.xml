@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.huoshan.api.huoshan.searchUtils.SearchActivity">
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        >
+
+        <EditText
+            android:id="@+id/ms_ss"
+            android:layout_width="420dp"
+            android:layout_height="wrap_content"
+            android:hint="搜索用户名或者火山号"
+            android:background="@drawable/sstype"
+             android:layout_centerVertical="true"
+            />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30sp"
+                android:background="@mipmap/ss"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                />
+
+      <TextView
+           android:id="@+id/ms_cancle"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="取消"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:layout_marginRight="10dp"
+          android:textSize="14sp"
+          />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ijk_transparent_dark"
+        ></View>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <LinearLayout
+            android:id="@+id/ms_yao"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:background="@drawable/a2m"
+                android:layout_width="35dp"
+                android:layout_height="35dp" />
+            <TextView
+                android:text="邀请朋友"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/ms_erwei"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:background="@drawable/ado"
+                android:layout_width="35dp"
+                android:layout_height="35dp" />
+            <TextView
+                android:text="我的二维码"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/ms_sao"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:background="@drawable/adv"
+                android:layout_width="35dp"
+                android:layout_height="35dp" />
+            <TextView
+                android:text="扫一扫"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/ashen"
+        android:text="建议"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        />
+
+    <com.huoshan.api.huoshan.searchUtils.utils.XCFlowLayout
+          android:id="@+id/ms_xc"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        >
+
+    </com.huoshan.api.huoshan.searchUtils.utils.XCFlowLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ijk_transparent_dark"
+        ></View>
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:id="@+id/ms_phone"
+        android:layout_height="30dp">
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <ImageView
+                android:background="@mipmap/adb"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:text="手机通讯录"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="看看谁也在火山"
+                android:layout_gravity="center_vertical"
+                />
+        <ImageView
+
+            android:layout_marginRight="10dp"
+            android:background="@drawable/a4n"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            />
+        </LinearLayout>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ijk_transparent_dark"
+        android:layout_marginLeft="35dp"
+        android:layout_marginBottom="10dp"
+        ></View>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ms_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_weight="1"
+        ></android.support.v7.widget.RecyclerView>
+</com.zhy.autolayout.AutoLinearLayout>

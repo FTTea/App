@@ -22,6 +22,7 @@ import android.view.animation.OvershootInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -118,6 +119,7 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
     private TextView nickname;
     private TextView care;
     private SimpleDraweeView simple;
+    private ImageView yanhua;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -147,6 +149,7 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         nickname = (TextView) view.findViewById(R.id.fl_name);
         simple = view.findViewById(R.id.fl_img);
         care = view.findViewById(R.id.fl_care);
+        yanhua = view.findViewById(R.id.fl_imgyanhua);
         tvChat.setOnClickListener(this);
         tvSendone.setOnClickListener(this);
         tvSendtwo.setOnClickListener(this);
@@ -159,7 +162,20 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         clearTiming();
         setData();
         setCare();
+
         return view;
+    }
+
+    private void shoAnimate() {
+        yanhua.setVisibility(View.VISIBLE);
+        ObjectAnimator alphaAnim = ObjectAnimator.ofFloat(yanhua, "alpha", 0.5f, 0.0f);
+        //缩放
+        /*ObjectAnimator scaleXAnim = ObjectAnimator.ofFloat(yanhua , "scaleX", 1.0f, 1.0f);
+        ObjectAnimator scaleYAnim = ObjectAnimator.ofFloat(yanhua, "scaleY", 1.0f, 1.0f);*/
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(alphaAnim);
+        set.setDuration(2000);
+        set.start();
     }
 
     private void setCare() {
@@ -233,7 +249,9 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.tvSendfor:/*礼物4*/
+                shoAnimate();
                 showGift4("烟花");
+
                 break;
         }
     }

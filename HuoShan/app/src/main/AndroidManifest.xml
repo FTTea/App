@@ -42,7 +42,6 @@
         <activity android:name=".mine.setup.SetUpActivity" />
         <activity android:name=".video.VideoingActivity" />
         <activity android:name=".mine.InviteActivity" />
-        <activity android:name=".mine.SearchActivity" />
         <activity android:name=".mine.InviteChildActivity" />
         <activity android:name=".mine.ErWeiMaActivity" />
         <activity android:name=".erweimautils.MipcaActivityCapture" />
@@ -71,21 +70,19 @@
             android:name=".live.services.MediaPlayerService"
             android:enabled="false"
             android:exported="false"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/ic_launcher" />
 
-            >
-        </service>
+        <activity android:name=".frist.city.CityingActivity" />
 
+        <meta-data
+            android:name="design_width"
+            android:value="768" />
+        <meta-data
+            android:name="design_height"
+            android:value="1280" />
 
-
-        <activity android:name=".frist.city.CityingActivity"></activity>
-
-
-
-        <meta-data android:name="design_width" android:value="768"></meta-data>
-
-        <meta-data android:name="design_height" android:value="1280"></meta-data>
-
+        <activity android:name=".searchUtils.SearchActivity" />
+        <activity android:name=".searchUtils.UserOwnerActivity"></activity>
     </application>
 
 </manifest>
