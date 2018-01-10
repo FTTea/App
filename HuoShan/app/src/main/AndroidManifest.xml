@@ -6,10 +6,8 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -68,40 +66,44 @@
             android:name=".live.application.VideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="user" />
+        <activity android:name=".frist.city.CityingActivity" />
+        <activity android:name=".searchUtils.SearchActivity" />
+        <activity android:name=".owner.UserOwnerActivity" ></activity>
+        <activity android:name=".mine.EditorActivity" />
+        <activity android:name=".mine.HuoLiActivity"></activity>
 
+        <!--QQ登录配置 start-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:noHistory="true"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent1106451029" />
+            </intent-filter>
+        </activity>
+
+        <!--SDK_V2.0引入了AssistActivity，开发者需在androidManifest.xml中注册。代码如下：-->
+
+        <activity android:name="com.tencent.connect.common.AssistActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <!--QQ登录配置 end-->
+
+        <meta-data
+            android:name="design_width"
+            android:value="768" />
+        <meta-data
+
+            android:name="design_height"
+            android:value="1280" />
         <service
             android:name=".live.services.MediaPlayerService"
             android:enabled="false"
             android:exported="false"
-<<<<<<< HEAD
             android:icon="@mipmap/ic_launcher" />
-=======
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name" />
->>>>>>> 764efab4c8a40a71ea80deb3f9d495648457300e
-
-        <activity android:name=".frist.city.CityingActivity" />
-
-        <meta-data
-            android:name="design_width"
-            android:value="768" />
-        <meta-data
-<<<<<<< HEAD
-            android:name="design_height"
-            android:value="1280" />
-
-        <activity android:name=".searchUtils.SearchActivity" />
-        <activity android:name=".searchUtils.UserOwnerActivity"></activity>
-=======
-            android:name="design_width"
-            android:value="768" />
-        <meta-data
-            android:name="design_height"
-            android:value="1280" />
-
-        <activity android:name=".mine.EditorActivity" />
-        <activity android:name=".mine.HuoLiActivity"></activity>
->>>>>>> 764efab4c8a40a71ea80deb3f9d495648457300e
     </application>
 
 </manifest>

@@ -179,10 +179,11 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setCare() {
-        final String iscare = care.getText().toString().trim();
+
         care.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String iscare = care.getText().toString().trim();
                 if(iscare.equals("关注")){
                     care.setText("已关注");
                     Toast.makeText(getContext(),"已关注",Toast.LENGTH_SHORT).show();

@@ -5,136 +5,249 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.huoshan.api.huoshan.searchUtils.UserOwnerActivity">
+    tools:context="com.huoshan.api.huoshan.owner.UserOwnerActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <ImageView
+            android:id="@+id/uo_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@mipmap/aam"
-            />
+            android:background="@mipmap/aam" />
+
         <TextView
+            android:id="@+id/uo_nick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="昵称"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
+
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
-             android:background="@drawable/a9u"
-            />
+            android:layout_marginRight="10dp"
+            android:background="@drawable/a9u" />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/ri_avatar"
-            android:background="@mipmap/adb"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_margin="10dp"
-            fresco:roundAsCircle="true"
-            />
+            android:layout_margin="5dp"
+            android:background="@mipmap/adb"
+            fresco:roundAsCircle="true" />
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
 
             >
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                >
-               <LinearLayout
-                   android:layout_width="0dp"
-                   android:layout_height="wrap_content"
-                   android:layout_weight="1"
-                   android:orientation="vertical"
+                android:orientation="horizontal">
 
-                   >
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="49.2万"
-                       android:textColor="@color/black"
-                       android:textSize="16sp"
-                       />
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="粉丝"
-                       android:textSize="14sp"
-                       />
-
-               </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
+
                     >
+
                     <TextView
+                        android:id="@+id/uo_fs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="49.2万"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="粉丝"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/uo_care"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="79"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
-                        />
+                        android:textSize="16sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="关注"
-                        android:textSize="14sp"
-                        />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
+                        android:id="@+id/uo_fire"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4.5万"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
-                        />
+                        android:textSize="16sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="火力"
-                        android:textSize="14sp"
-                        />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
             </LinearLayout>
-             <Button
-                 android:layout_width="match_parent"
-                 android:layout_height="35dp"
-                 android:text="关注"
-                 android:background="@drawable/gztype"
-                 android:textColor="@color/white"
-                 android:textSize="18dp"
-                 />
+
+            <Button
+                android:id="@+id/uo_btncare"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/gztype"
+                android:text="关注"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        >
+         <ImageView
+             android:layout_width="20dp"
+             android:layout_height="20dp"
+             android:background="@mipmap/ad2"
+             android:layout_marginRight="5dp"
+             />
+        <TextView
+            android:id="@+id/uo_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="唐山"
+            />
+        <TextView
+            android:id="@+id/uo_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="男"
+            />
+        <TextView
+            android:id="@+id/uo_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="85后"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="送出"
+            />
+         <TextView
+             android:id="@+id/uo_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:layout_marginLeft="5dp"
+             android:layout_marginRight="5dp"
+            android:text="0"
+            />
+          <ImageView
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:background="@mipmap/agf"/>
+    </LinearLayout>
+
+    <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+         <TextView
+             android:id="@+id/uo_title"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="decorition"
+             android:layout_centerVertical="true"
+             android:layout_marginLeft="10dp"
+             />
+     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/uo_video"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@mipmap/a7q"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/uo_live"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            android:background="@mipmap/aaw"
+            />
+        </LinearLayout>
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/uo_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        ></android.support.v4.view.ViewPager>
 </LinearLayout>

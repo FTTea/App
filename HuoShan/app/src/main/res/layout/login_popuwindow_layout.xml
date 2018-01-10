@@ -87,6 +87,7 @@
               android:layout_centerInParent="true"
               />
           <ImageView
+              android:id="@+id/mweixin"
               android:layout_toRightOf="@id/mqq"
               android:layout_width="30dp"
               android:layout_height="30dp"

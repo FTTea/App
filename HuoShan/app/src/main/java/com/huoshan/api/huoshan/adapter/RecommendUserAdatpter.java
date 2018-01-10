@@ -2,19 +2,18 @@ package com.huoshan.api.huoshan.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.huoshan.api.huoshan.Bean.SearchBean;
 import com.huoshan.api.huoshan.R;
-import com.huoshan.api.huoshan.live.gift.ui.fragment.LayerFragment;
-import com.huoshan.api.huoshan.searchUtils.UserOwnerActivity;
+import com.huoshan.api.huoshan.owner.UserOwnerActivity;
 import com.zhy.autolayout.AutoLinearLayout;
 
 import java.util.List;
@@ -43,7 +42,7 @@ public class RecommendUserAdatpter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myholder= (MyViewHolder) holder;
-        SearchBean.DataBean.RecommendUserBean bean = list.get(position);
+        final SearchBean.DataBean.RecommendUserBean bean = list.get(position);
         myholder.avatar.setImageURI(Uri.parse(bean.getUser().getAvatar_jpg().getUrl_list().get(0)));
         myholder.nick.setText(bean.getUser().getNickname());
         myholder.title.setText(bean.getDescription());
@@ -56,7 +55,19 @@ public class RecommendUserAdatpter extends RecyclerView.Adapter<RecyclerView.Vie
         myholder.all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //数据存储
+                SharedPreferences sp = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = sp.edit();
+                edit.putString("nick",bean.getUser().getNickname());
+                edit.putString("title",bean.getDescription());
+                edit.putString("avatar",bean.getUser().getAvatar_jpg().getUrl_list().get(0));
+                edit.putString("city",bean.getUser().getCity());
+                edit.putString("birthday",bean.getUser().getBirthday_description());
+
+                edit.commit();
+                //跳转
                 Intent intent=new Intent(context, UserOwnerActivity.class);
+
                 context.startActivity(intent);
             }
         });
